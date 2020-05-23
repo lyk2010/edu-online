@@ -1,0 +1,11 @@
+server:
+  port: 8003
+eureka:
+  client:
+    #是否将自己注册到eureka注册中心中去，本身是服务器，无需注册
+    register-with-eureka: false
+    #是否从eureka中获取注册信息
+    fetch-registry: false
+    #eureka客户端和eureka服务端进行通信的地址
+    service-url:
+      defaultZone: http://127.0.0.1:${server.port}/eureka/

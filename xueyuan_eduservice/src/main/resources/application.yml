@@ -1,0 +1,68 @@
+#服务端口号设置
+server:
+  port: 8001
+#服务名称设置
+spring:
+  application:
+    name: xueyuan-eduservice
+#全局日期格式设置
+  jackson:
+    time-zone: GMT+8
+    date-format: yyyy-MM-dd HH:mm:ss
+#环境设置 dev test prod
+  profiles:
+    active: dev
+  #MySQL数据库连接
+  datasource:
+    driver-class-name: com.mysql.jdbc.Driver
+    url: jdbc:mysql://192.168.237.150:3306/guli_edu?characterEncoding=utf-8&serverTimezone=GMT&useSSL=false
+    username: root
+    password: root
+    # Hikari是springboot2.0之后默认整合的数据库连接池，比Druid更快的数据库连接池
+    #数据源类型
+#    type: com.zaxxer.hikari.HikariDataSource
+    #连接池名称，默认HikariPool-1
+#    hikari:
+#      pool-name: GuliHikariPool
+      #最大连接数，小于等于0会被重置为默认值10；大于零小于1会被重置为maximum-idle的值
+#      maximum-pool-size: 12
+      #连接超时时间：毫秒 小于250毫秒，否则被重置为默认值30秒
+#      connection-timeout: 60000
+      #最小空闲连接，默认值10，小于0或大于maximum-pool-size，都会被重置为maximum-pool-size
+#      minimum-idle: 10
+      #空闲连接超时时间，默认值600000（10分钟），大于等于max-lifetime且max-lifetime>0会被重置为0；不等于0且小于10秒，都会被重置为10秒
+      #只有空闲连接数大于最大连接数且空闲时间超过该值，才会被释放
+#      idle-timeout: 500000
+      #连接最大存活时间 不等于0且小于30秒，会被重置为默认值30分钟，设置应该比MySQL设置的超时时间短
+#      max-lifetime: 540000
+      #连接测试查询
+#      connection-test-query: SELECT 1
+
+#mybatis日志
+mybatis-plus:
+  configuration:
+    log-impl: org.apache.ibatis.logging.stdout.StdOutImpl
+  #配置mapper xml文件的路径
+  mapper-locations: classpath:com/kevin/online/eduservice/mapper/xml/*.xml
+
+
+#配置阿里云存储信息
+aliyun:
+  oss:
+    file:
+      endpoint: oss-cn-beijing.aliyuncs.com
+      accessKeyId: LTAI4FpqKUow56nsZHamLDth
+      accessKeySecret: uvieDQqJw7aYPHwI43F4TdT9FPY4AI
+      bucketName: edu-teacher202051
+      #存储头像文件夹名称
+      host: career
+
+
+#eureka注册服务配置
+eureka:
+  client:
+    service-url:
+      defaultZone: http://127.0.0.1:8003/eureka/
+  #eureka服务器上获取的是服务器的ip地址，否则是主机名
+  instance:
+    prefer-ip-address: true

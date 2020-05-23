@@ -1,0 +1,28 @@
+#服务端口号设置
+server:
+  port: 8002
+#服务名称设置
+spring:
+  application:
+    name: xueyuan-videoservice
+  servlet:
+    multipart:
+      #最大上传单个文件大小：默认1M
+      max-file-size: 1024MB
+      #最大总上传的数据大小：默认1M
+      max-request-size: 1024MB
+#配置阿里云存储信息
+aliyun:
+  vod:
+    file:
+      keyId: LTAI4FpqKUow56nsZHamLDth
+      keySecret: uvieDQqJw7aYPHwI43F4TdT9FPY4AI
+
+
+
+eureka:
+  client:
+    service-url:
+      defaultZone: http://127.0.0.1:8003/eureka
+  instance:
+    prefer-ip-address: true
